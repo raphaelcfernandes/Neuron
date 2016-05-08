@@ -1,13 +1,19 @@
 #ifndef PERCEPTRON_H
 #define PERCEPTRON_H
+#include "CreateNumber.h"
 
 class Perceptron{
 private:
-    float *weights;
     int typeOfWeights;//0 off, 1- on. 0: all weights are 0, 1: weights are random
+    int bias;
+    int resultado;
+    CreateNumber input;
 public:
-    float *setWeights(CreateNumber->rows);
+    float *weights;
+    void setWeights();
     void setTypeOfWeights(int choice);
+    void setBias(int value);
+    int getBias();
     int getTypeOfWeights();
 };
 

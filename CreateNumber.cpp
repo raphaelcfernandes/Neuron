@@ -1,6 +1,6 @@
 #include "CreateNumber.h"
 
-void **CreateNumber::setMatrix(int number){
+void CreateNumber::setMatrix(int number){
     int **newMatrix=new int*[this->rows]();
     for(int i=0;i<this->rows;++i){
         newMatrix[i]=new int[this->columns]();

@@ -1,11 +1,12 @@
 #include "Perceptron.h"
 
-float Perceptron::setWeights(CreateNumber->rows){
-    if(this->getTypeOfWeights()==0){
-
-    }
+void Perceptron::setWeights(){
+    this->weights = new float[this->input.columns*this->input.rows]();
 }
 
 void Perceptron::setTypeOfWeights(int choice){this->typeOfWeights=choice;}
 
 int Perceptron::getTypeOfWeights(){return this->typeOfWeights;}
+
+//getBias
+//setBias

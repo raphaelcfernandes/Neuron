@@ -1,7 +1,6 @@
 #include "Perceptron.h"
 
 CreateNumber c1;
-#include <iostream>
 
 void Perceptron::setWeights(int choice) {
     int size = (c1.columns * c1.rows) + 1; //Matriz number size + bias
@@ -13,15 +12,19 @@ void Perceptron::setWeights(int choice) {
     }
 }
 
-double Perceptron::train(CreateNumber number, double *weights) {
-    int i, j, v_weights = 0;
-    double sum = 0;
-    int erros = 0;
-
-    if (weightsAnalyze(number,weights)!= number.getNumber()) {
-        erros++;
-        v_weights = 0;
+int Perceptron::train(CreateNumber number, double *weights) {
+    int errors = 0;
+    int sum = weightsAnalyze(number,weights);
+    if (sum != number.getNumber()) {
+        errors++;
         //Weights adjustment
+        weightsAdjustment(number,weights,sum);
+    }
+    return errors;
+}
+
+void Perceptron::weightsAdjustment(CreateNumber number, double *weights, int sum){
+    int i, j, v_weights = 0;
     #pragma omp parallel for    
         for (i = 0; i < number.rows; ++i) {
             for (j = 0; j < number.columns; ++j) {
@@ -30,7 +33,6 @@ double Perceptron::train(CreateNumber number, double *weights) {
                 v_weights++;
             }
         }
-    }
 }
 
 int Perceptron::weightsAnalyze(CreateNumber number, double *weights) {

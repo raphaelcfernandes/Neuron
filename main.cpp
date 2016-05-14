@@ -10,7 +10,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     CreateNumber matrix;
-    matrix.setMatrix(0);
+    matrix.setMatrix(1);
     Perceptron p;
     p.setWeights(0);
     cout<<p.train(matrix,p.weights);

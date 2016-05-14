@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h> 
 #include <omp.h>
-
+#include <iostream>
 
 class Perceptron{
 private:  
@@ -13,9 +13,10 @@ public:
     double *weights;
     void setWeights(int choice);
     int getLearningRate(){return this->learningRate;}
-    int train(CreateNumber matrix, double *weights);
-    int weightsAnalyze(CreateNumber number, double *weights);
-    void weightsAdjustment(CreateNumber number, double *weights,int sum);
+    int train(CreateNumber number);
+    int weightsAnalyze(CreateNumber number);
+    void weightsAdjustment(CreateNumber number,int output);
+    void recognizeNumber(CreateNumber number);
 };
 
 #endif

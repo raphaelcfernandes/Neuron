@@ -12,40 +12,48 @@ void Perceptron::setWeights(int choice) {
     }
 }
 
-int Perceptron::train(CreateNumber number, double *weights) {
+int Perceptron::train(CreateNumber number) {
     int errors = 0;
-    int sum = weightsAnalyze(number,weights);
-    if (sum != number.getNumber()) {
+    int output = weightsAnalyze(number);//Yi
+    if (output != number.getNumber()) {//Yi != Di (desired output (number.getNumber())
         errors++;
         //Weights adjustment
-        weightsAdjustment(number,weights,sum);
+        
+        weightsAdjustment(number,output);
     }
     return errors;
 }
 
-void Perceptron::weightsAdjustment(CreateNumber number, double *weights, int sum){
+void Perceptron::weightsAdjustment(CreateNumber number, int output){
     int i, j, v_weights = 0;
-    #pragma omp parallel for    
+    //#pragma omp parallel for    
         for (i = 0; i < number.rows; ++i) {
             for (j = 0; j < number.columns; ++j) {
                 this->weights[v_weights] = this->weights[v_weights]+
-                        ((this->learningRate * (number.getNumber() - sum)) * number.getMatrix()[i][j]);
+                        ((this->learningRate * (number.getNumber() - output)) * number.getMatrix()[i][j]);
                 v_weights++;
             }
         }
+    this->weights[number.columns*number.rows] = this->weights[number.columns*number.rows]+
+                 ((this->learningRate * (number.getNumber() - output)) * number.getBias());
 }
 
-int Perceptron::weightsAnalyze(CreateNumber number, double *weights) {
+int Perceptron::weightsAnalyze(CreateNumber number) {
     int i, j, v_weights = 0;
     double sum = 0;
-    #pragma omp parallel for reduction(+:sum) 
+    //#pragma omp parallel for reduction(+:sum) schedule(guided)
         for (i = 0; i < number.rows; ++i) {
             for (j = 0; j < number.columns; ++j) {
-                sum += number.getMatrix()[i][j] * weights[v_weights];
+                sum += number.getMatrix()[i][j] * this->weights[v_weights];
                 v_weights++;
             }
         }
-    sum += number.getBias() * weights[number.columns * number.rows];
+    sum += number.getBias() * this->weights[number.columns * number.rows];
     return sum>0 ? 1 : 0;
 }
 
+void Perceptron::recognizeNumber(CreateNumber number){
+    int output = weightsAnalyze(number);
+    if(output == number.getNumber())
+        std::cout<<"Recognized Number: "<<output<<"\n";
+}

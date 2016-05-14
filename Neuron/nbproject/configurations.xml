@@ -39,6 +39,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <commandLine>-fopenmp</commandLine>
+        </ccTool>
       </compileType>
       <item path="../CreateNumber.cpp" ex="false" tool="1" flavor2="0">
       </item>

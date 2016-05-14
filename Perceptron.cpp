@@ -53,6 +53,5 @@ int Perceptron::weightsAnalyze(CreateNumber number) {
 
 void Perceptron::recognizeNumber(CreateNumber number){
     int output = weightsAnalyze(number);
-    if(output == number.getNumber())
-        std::cout<<"Recognized Number: "<<output<<"\n";
+    std::cout<<"I know this number, it's number: "<<output<<" \n";
 }

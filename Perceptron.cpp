@@ -26,10 +26,10 @@ int Perceptron::train(CreateNumber number) {
 
 void Perceptron::weightsAdjustment(CreateNumber number, int output){
     int i, j, v_weights = 0;
-    //#pragma omp parallel for    
-        for (i = 0; i < number.rows; ++i) {
+    for (i = 0; i < number.rows; ++i) {
+    #pragma omp parallel for schedule(static)
             for (j = 0; j < number.columns; ++j) {
-                this->weights[v_weights] = this->weights[v_weights]+
+                this->weights[(i*number.columns)+j] = this->weights[(i*number.columns)+j]+
                         ((this->learningRate * (number.getNumber() - output)) * number.getMatrix()[i][j]);
                 v_weights++;
             }
@@ -39,13 +39,12 @@ void Perceptron::weightsAdjustment(CreateNumber number, int output){
 }
 
 int Perceptron::weightsAnalyze(CreateNumber number) {
-    int i, j, v_weights = 0;
+    int i, j, **matriz = number.getMatrix();
     double sum = 0;
-    //#pragma omp parallel for reduction(+:sum) schedule(guided)
-        for (i = 0; i < number.rows; ++i) {
+    for (i = 0; i < number.rows; ++i) {
+    #pragma omp parallel for reduction(+:sum) schedule(static)
             for (j = 0; j < number.columns; ++j) {
-                sum += number.getMatrix()[i][j] * this->weights[v_weights];
-                v_weights++;
+                sum += matriz[i][j] * this->weights[(i*number.columns)+j];
             }
         }
     sum += number.getBias() * this->weights[number.columns * number.rows];

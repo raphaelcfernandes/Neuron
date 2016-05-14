@@ -14,6 +14,7 @@ public:
     void setWeights(int choice);
     int getLearningRate(){return this->learningRate;}
     double train(CreateNumber matrix, double *weights);
+    int weightsAnalyze(CreateNumber number, double *weights);
 };
 
 #endif

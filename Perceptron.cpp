@@ -1,12 +1,17 @@
 #include "Perceptron.h"
 
-void Perceptron::setWeights(){
-    this->weights = new float[this->input.columns*this->input.rows]();
+void Perceptron::setWeights(int choice){
+    CreateNumber c1;
+    int size=(c1.columns*c1.rows)+1;
+    this->weights = new double[size]();
+    
+    if(choice==1){
+        for(int i=0;i<size;++i)
+            this->weights[i]=(double)rand() / (double)RAND_MAX;
+    }
+
 }
 
-void Perceptron::setTypeOfWeights(int choice){this->typeOfWeights=choice;}
-
-int Perceptron::getTypeOfWeights(){return this->typeOfWeights;}
-
-//getBias
-//setBias
+void Perceptron::train(int **matrix, double *weights){
+    
+}

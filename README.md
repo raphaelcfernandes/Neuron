@@ -1,5 +1,4 @@
 # Neuron
 
-Neural network that recognizes number from 0 to 5.
+Neural network using single layer that recognizes number from 0 to 5.
 
-Now it's only working with 0 and 1.

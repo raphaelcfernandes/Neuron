@@ -51,7 +51,8 @@ int Perceptron::weightsAnalyze(CreateNumber number) {
     return sum>0 ? 1 : 0;
 }
 
-void Perceptron::recognizeNumber(CreateNumber number){
+int Perceptron::recognizeNumber(CreateNumber number){
     int output = weightsAnalyze(number);
-    std::cout<<"I know this number, it's number: "<<output<<" \n";
+    //std::cout<<"I know this number, it's number: "<<output<<" \n";
+    return output;
 }

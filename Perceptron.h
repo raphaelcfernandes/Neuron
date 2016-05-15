@@ -16,7 +16,7 @@ public:
     int train(CreateNumber number);
     int weightsAnalyze(CreateNumber number);
     void weightsAdjustment(CreateNumber number,int output);
-    void recognizeNumber(CreateNumber number);
+    int recognizeNumber(CreateNumber number);
 };
 
 #endif

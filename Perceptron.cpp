@@ -12,30 +12,30 @@ void Perceptron::setWeights(int choice) {
     }
 }
 
-int Perceptron::train(CreateNumber number) {
+int Perceptron::train(CreateNumber number,int desiredOutput) {
     int errors = 0;
     int output = weightsAnalyze(number);//Yi
-    if (output != number.getNumber()) {//Yi != Di (desired output (number.getNumber())
+    if (output != desiredOutput) {//Yi != Di (desired output (number.getNumber())
         errors++;
         //Weights adjustment
         
-        weightsAdjustment(number,output);
+        weightsAdjustment(number,output,desiredOutput);
     }
     return errors;
 }
 
-void Perceptron::weightsAdjustment(CreateNumber number, int output){
+void Perceptron::weightsAdjustment(CreateNumber number, int output,int desiredOutput){
     int i, j, v_weights = 0;
     for (i = 0; i < number.rows; ++i) {
     #pragma omp parallel for schedule(static)
             for (j = 0; j < number.columns; ++j) {
                 this->weights[(i*number.columns)+j] = this->weights[(i*number.columns)+j]+
-                        ((this->learningRate * (number.getNumber() - output)) * number.getMatrix()[i][j]);
+                        ((this->learningRate * (desiredOutput - output)) * number.getMatrix()[i][j]);
                 v_weights++;
             }
         }
     this->weights[number.columns*number.rows] = this->weights[number.columns*number.rows]+
-                 ((this->learningRate * (number.getNumber() - output)) * number.getBias());
+                 ((this->learningRate * (desiredOutput - output)) * number.getBias());
 }
 
 int Perceptron::weightsAnalyze(CreateNumber number) {
@@ -53,6 +53,5 @@ int Perceptron::weightsAnalyze(CreateNumber number) {
 
 int Perceptron::recognizeNumber(CreateNumber number){
     int output = weightsAnalyze(number);
-    //std::cout<<"I know this number, it's number: "<<output<<" \n";
     return output;
 }

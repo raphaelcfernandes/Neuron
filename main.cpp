@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include <stdio.h>
 #include "CreateNumber.h"
 #include "Perceptron.h"
 using namespace std;
@@ -29,9 +30,10 @@ int main(int argc, char** argv) {
                 do {
                     errors = 0;
                     time++;
-                    errors += p.train(matrix0);
-                    errors += p.train(matrix1);
+                    errors += p.train(matrix0,0);
+                    errors += p.train(matrix1,1);
                 } while (errors > 0);
+                system("clear");
                 cout << "\nTesting number 0. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
                 cout << "\nTesting number 1. \nI've detected the number: "<<p.recognizeNumber(matrix1)<<endl;
 
@@ -39,13 +41,13 @@ int main(int argc, char** argv) {
                 cout << "\nTesting number 2. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
                 
                 matrix0.setMatrix(3);
-                cout << "Testing number 3. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
+                cout << "\nTesting number 3. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
                 
                 matrix0.setMatrix(4);
-                cout << "Testing number 4. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
+                cout << "\nTesting number 4. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
                 
                 matrix0.setMatrix(5);
-                cout << "Testing number 5. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
+                cout << "\nTesting number 5. \nI've detected the number: "<<p.recognizeNumber(matrix0)<<endl;
                 break;
         }
     } while (op != 4);

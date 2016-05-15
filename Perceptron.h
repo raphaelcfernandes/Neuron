@@ -13,9 +13,9 @@ public:
     double *weights;
     void setWeights(int choice);
     int getLearningRate(){return this->learningRate;}
-    int train(CreateNumber number);
+    int train(CreateNumber number,int desiredOutput);
     int weightsAnalyze(CreateNumber number);
-    void weightsAdjustment(CreateNumber number,int output);
+    void weightsAdjustment(CreateNumber number,int output, int desiredOutput);
     int recognizeNumber(CreateNumber number);
 };
 

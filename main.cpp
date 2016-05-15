@@ -10,8 +10,7 @@ using namespace std;
 /*
  *
  */
-int returnNumber(int a, int b);
-int returnNumber3(int a, int b, int c, int d, int e, int f);
+int returnNumber(int a, int b, int c, int d, int e, int f);
 
 int main(int argc, char** argv) {
     int errors, time = 0, op, result, i;
@@ -68,42 +67,42 @@ int main(int argc, char** argv) {
                         }
                 } while (errors > 0);
                 cout << "\nTesting number 0.";
-                result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0));
+                result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0),NULL,NULL,NULL,NULL);
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
 
                 cout << "\nTesting number 1.";
-                result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1));
+                result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1),NULL,NULL,NULL,NULL);
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
 
                 cout << "\nTesting number 2.";
-                result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2));
+                result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2),NULL,NULL,NULL,NULL);
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
 
                 cout << "\nTesting number 3.";
-                result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3));
+                result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3),NULL,NULL,NULL,NULL);
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
 
                 cout << "\nTesting number 4.";
-                result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4));
+                result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),NULL,NULL,NULL,NULL);
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
 
                 cout << "\nTesting number 5.";
-                result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5));
+                result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5),NULL,NULL,NULL,NULL);
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
@@ -171,42 +170,42 @@ int main(int argc, char** argv) {
                     errors += p5.train(m5, 1);
                 } while (errors > 0);
                 cout << "\nTesting number 0.";
-                result = returnNumber3(p0.recognizeNumber(m0), p1.recognizeNumber(m0),
+                result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0),
                         p2.recognizeNumber(m0), p3.recognizeNumber(m0), p4.recognizeNumber(m0), p5.recognizeNumber(m0));
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
                 cout << "\nTesting number 1.";
-                result = returnNumber3(p0.recognizeNumber(m1), p1.recognizeNumber(m1),
+                result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1),
                         p2.recognizeNumber(m1), p3.recognizeNumber(m1), p4.recognizeNumber(m1), p5.recognizeNumber(m1));
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
                 cout << "\nTesting number 2.";
-                result = returnNumber3(p0.recognizeNumber(m2), p1.recognizeNumber(m2),
+                result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2),
                         p2.recognizeNumber(m2), p3.recognizeNumber(m2), p4.recognizeNumber(m2), p5.recognizeNumber(m2));
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
                 cout << "\nTesting number 3.";
-                result = returnNumber3(p0.recognizeNumber(m3), p1.recognizeNumber(m3),
+                result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3),
                         p2.recognizeNumber(m3), p3.recognizeNumber(m3), p4.recognizeNumber(m3), p5.recognizeNumber(m3));
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
                 cout << "\nTesting number 4.";
-                result = returnNumber3(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
+                result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
                         p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
                 else
                     cout << "\nI've detected the number: " << result;
                 cout << "\nTesting number 5.";
-                result = returnNumber3(p0.recognizeNumber(m5), p1.recognizeNumber(m5),
+                result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5),
                         p2.recognizeNumber(m5), p3.recognizeNumber(m5), p4.recognizeNumber(m5), p5.recognizeNumber(m5));
                 if (result == -1)
                     cout << "\nCan't recognize this number.";
@@ -245,7 +244,7 @@ int main(int argc, char** argv) {
 
 }
 
-int returnNumber3(int a, int b, int c, int d, int e, int f) {
+int returnNumber(int a, int b, int c, int d, int e, int f) {
     if (a && !b && !c && !d && !e && !f)
         return 0;
     if (!a && b && !c && !d && !e && !f)
@@ -258,15 +257,6 @@ int returnNumber3(int a, int b, int c, int d, int e, int f) {
         return 4;
     if (!a && !b && !c && !d && !e && f)
         return 5;
-    else
-        return -1;
-}
-
-int returnNumber(int a, int b) {
-    if (a && !b)//0
-        return 0;
-    if (!a && b)
-        return 1;
     else
         return -1;
 }

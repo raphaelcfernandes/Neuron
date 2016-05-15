@@ -58,13 +58,10 @@ int main(int argc, char** argv) {
                 do {
                     errors = 0;
                     time++;
-                    #pragma omp parallel for reduction(+: errors)
-                        for (i = 0; i < 5; i++) {
-                            errors += p0.train(m0, 1);
-                            errors += p0.train(m1, 0);
-                            errors += p1.train(m0, 0);
-                            errors += p1.train(m1, 1);
-                        }
+                    errors += p0.train(m0, 1);
+                    errors += p0.train(m1, 0);
+                    errors += p1.train(m0, 0);
+                    errors += p1.train(m1, 1);
                 } while (errors > 0);
                 cout << "\nTesting number 0.";
                 result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0),NULL,NULL,NULL,NULL);

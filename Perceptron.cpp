@@ -15,7 +15,7 @@ void Perceptron::setWeights(int choice) {
 int Perceptron::train(CreateNumber number,int desiredOutput) {
     int errors = 0;
     int output = weightsAnalyze(number);//Yi
-    if (output != desiredOutput) {//Yi != Di (desired output (number.getNumber())
+    if (output != desiredOutput) {//Yi != Di (desired output )
         errors++;
         //Weights adjustment
         
@@ -24,18 +24,18 @@ int Perceptron::train(CreateNumber number,int desiredOutput) {
     return errors;
 }
 
-void Perceptron::weightsAdjustment(CreateNumber number, int output,int desiredOutput){
+void Perceptron::weightsAdjustment(CreateNumber number, int perceptronOutput,int desiredOutput){
     int i, j, v_weights = 0;
     for (i = 0; i < number.rows; ++i) {
     #pragma omp parallel for schedule(static)
             for (j = 0; j < number.columns; ++j) {
                 this->weights[(i*number.columns)+j] = this->weights[(i*number.columns)+j]+
-                        ((this->learningRate * (desiredOutput - output)) * number.getMatrix()[i][j]);
+                        ((this->learningRate * (desiredOutput - perceptronOutput)) * number.getMatrix()[i][j]);
                 v_weights++;
             }
         }
     this->weights[number.columns*number.rows] = this->weights[number.columns*number.rows]+
-                 ((this->learningRate * (desiredOutput - output)) * number.getBias());
+                 ((this->learningRate * (desiredOutput - perceptronOutput)) * number.getBias());
 }
 
 int Perceptron::weightsAnalyze(CreateNumber number) {

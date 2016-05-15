@@ -15,7 +15,7 @@ public:
     int getLearningRate(){return this->learningRate;}
     int train(CreateNumber number,int desiredOutput);
     int weightsAnalyze(CreateNumber number);
-    void weightsAdjustment(CreateNumber number,int output, int desiredOutput);
+    void weightsAdjustment(CreateNumber number,int perceptronOutput, int desiredOutput);
     int recognizeNumber(CreateNumber number);
 };
 

@@ -10,8 +10,10 @@ using namespace std;
 /*
  *
  */
+int returnNumber(int a,int b);
+int returnNumber3(int a,int b,int c,int d, int e,int f);
 int main(int argc, char** argv) {
-    int errors, time = 0, op;
+    int errors, time = 0, op,result;
     CreateNumber m0, m1,m2,m3,m4,m5;
     Perceptron p0, p1, p2, p3, p4, p5;
     m0.setMatrix(0);m2.setMatrix(2);m4.setMatrix(4);
@@ -33,7 +35,6 @@ int main(int argc, char** argv) {
                     errors += p0.train(m0, 0);
                     errors += p0.train(m1, 1);
                 } while (errors > 0);
-                system("clear");
                 cout << "\nTesting number 0. \nI've detected the number: " << p0.recognizeNumber(m0) << endl;
                 cout << "\nTesting number 1. \nI've detected the number: " << p0.recognizeNumber(m1) << endl;
                 cout << "\nTesting number 2. \nI've detected the number: " << p0.recognizeNumber(m2) << endl;
@@ -56,16 +57,147 @@ int main(int argc, char** argv) {
                     errors += p1.train(m1, 1);
                 } while (errors > 0);
                 cout<<"\nTesting number 0.";
-                if(p0.recognizeNumber(m0) && !p1.recognizeNumber(m0))
-                    cout<<"\nI've detected the number 0";
+                result=returnNumber(p0.recognizeNumber(m0),p1.recognizeNumber(m0));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                
                 cout<<"\nTesting number 1.";
-                if(!p0.recognizeNumber(m1) && p1.recognizeNumber(m1))
-                    cout<<"\nI've detected the number 1";
-                cout<<"\nTesting number 1.";
-                if(!p0.recognizeNumber(m1) && p1.recognizeNumber(m1))
-                    cout<<"\nI've detected the number 1";
+                result=returnNumber(p0.recognizeNumber(m1),p1.recognizeNumber(m1));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                
+                cout<<"\nTesting number 2.";
+                result=returnNumber(p0.recognizeNumber(m2),p1.recognizeNumber(m2));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                
+                cout<<"\nTesting number 3.";
+                result=returnNumber(p0.recognizeNumber(m3),p1.recognizeNumber(m3));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                
+                cout<<"\nTesting number 4.";
+                result=returnNumber(p0.recognizeNumber(m4),p1.recognizeNumber(m4));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                
+                cout<<"\nTesting number 5.";
+                result=returnNumber(p0.recognizeNumber(m5),p1.recognizeNumber(m5));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
                 free(p0.weights);
                 free(p1.weights);
+                break;
+            case 3:
+                p0.setWeights(0);
+                p1.setWeights(0);
+                p2.setWeights(0);
+                p3.setWeights(0);
+                p4.setWeights(0);
+                p5.setWeights(0);
+                time=0;
+                do {
+                    errors = 0;
+                    time++;
+                    errors += p0.train(m0, 1);
+                    errors += p0.train(m1, 0);
+                    errors += p0.train(m2, 0);
+                    errors += p0.train(m3, 0);
+                    errors += p0.train(m4, 0);
+                    errors += p0.train(m5, 0);
+                    
+                    
+                    errors += p1.train(m0, 0);
+                    errors += p1.train(m1, 1);
+                    errors += p1.train(m2, 0);
+                    errors += p1.train(m3, 0);
+                    errors += p1.train(m4, 0);
+                    errors += p1.train(m5, 0);
+                    
+                    errors += p2.train(m0, 0);
+                    errors += p2.train(m1, 0);
+                    errors += p2.train(m2, 1);
+                    errors += p2.train(m3, 0);
+                    errors += p2.train(m4, 0);
+                    errors += p2.train(m5, 0);
+                    
+                    errors += p3.train(m0, 0);
+                    errors += p3.train(m1, 0);
+                    errors += p3.train(m2, 0);
+                    errors += p3.train(m3, 1);
+                    errors += p3.train(m4, 0);
+                    errors += p3.train(m5, 0);
+                    
+                    errors += p4.train(m0, 0);
+                    errors += p4.train(m1, 0);
+                    errors += p4.train(m2, 0);
+                    errors += p4.train(m3, 0);
+                    errors += p4.train(m4, 1);
+                    errors += p4.train(m5, 0);
+                    
+                    errors += p5.train(m0, 0);
+                    errors += p5.train(m1, 0);
+                    errors += p5.train(m2, 0);
+                    errors += p5.train(m3, 0);
+                    errors += p5.train(m4, 0);
+                    errors += p5.train(m5, 1);
+                } while (errors > 0);
+                cout<<"\nTesting number 0.";
+                result=returnNumber3(p0.recognizeNumber(m0),p1.recognizeNumber(m0),
+                        p2.recognizeNumber(m0),p3.recognizeNumber(m0),p4.recognizeNumber(m0),p5.recognizeNumber(m0));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                cout<<"\nTesting number 1.";
+                result=returnNumber3(p0.recognizeNumber(m1),p1.recognizeNumber(m1),
+                        p2.recognizeNumber(m1),p3.recognizeNumber(m1),p4.recognizeNumber(m1),p5.recognizeNumber(m1));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                cout<<"\nTesting number 2.";
+                result=returnNumber3(p0.recognizeNumber(m2),p1.recognizeNumber(m2),
+                        p2.recognizeNumber(m2),p3.recognizeNumber(m2),p4.recognizeNumber(m2),p5.recognizeNumber(m2));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                cout<<"\nTesting number 3.";
+                result=returnNumber3(p0.recognizeNumber(m3),p1.recognizeNumber(m3),
+                        p2.recognizeNumber(m3),p3.recognizeNumber(m3),p4.recognizeNumber(m3),p5.recognizeNumber(m3));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                cout<<"\nTesting number 4.";
+                result=returnNumber3(p0.recognizeNumber(m4),p1.recognizeNumber(m4),
+                        p2.recognizeNumber(m4),p3.recognizeNumber(m4),p4.recognizeNumber(m4),p5.recognizeNumber(m4));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                cout<<"\nTesting number 5.";
+                result=returnNumber3(p0.recognizeNumber(m5),p1.recognizeNumber(m5),
+                        p2.recognizeNumber(m5),p3.recognizeNumber(m5),p4.recognizeNumber(m5),p5.recognizeNumber(m5));
+                if(result==-1)
+                    cout<<"\nCan't recognize this number.";
+                else
+                    cout<<"\nI've detected the number: "<<result;
+                free(p0.weights);free(p2.weights);free(p4.weights);
+                free(p1.weights);free(p3.weights);free(p5.weights);
                 break;
         }
     } while (op != 4);
@@ -74,4 +206,28 @@ int main(int argc, char** argv) {
 
 }
 
+int returnNumber3(int a,int b,int c,int d, int e,int f){
+    if(a && !b && !c && !d && !e && !f)
+        return 0;
+    if(!a && b && !c && !d && !e && !f)
+        return 1;
+    if(!a && !b && c && !d && !e && !f)
+        return 2;
+    if(!a && !b && !c && d && !e && !f)
+        return 3;
+    if(!a && !b && !c && !d && e && !f)
+        return 4;
+    if(!a && !b && !c && !d && !e && f)
+        return 5;
+    else
+        return -1;
+}
 
+int returnNumber(int a,int b){
+    if(a && !b)//0
+        return 0;
+    if(!a && b)
+        return 1;
+    else
+        return -1;
+}

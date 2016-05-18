@@ -90,3 +90,31 @@ int **CreateNumber::getMatrix() {
     return this->matrix;
 }
 
+void CreateNumber::distortMatrix(){
+    srand(time(NULL));
+    int a;
+    int sum=0,i,j,n=0;
+    for (i = 0; i < this->rows; ++i) {
+        #pragma omp parallel for reduction(+:sum) schedule(static)
+            for (j = 0; j < this->columns; ++j) {
+                if(this->matrix[i][j]==1)
+                    sum +=1;
+            }
+        }
+    n=rand()%sum+1;
+    while(n>0){
+        for(i=0;i<this->rows;++i){
+            for(j=0;j<this->columns;++j){
+                if(this->matrix[i][j]==1){
+                    this->matrix[i][j]=0;
+                    n--;
+                    break;
+                }
+            }
+            if(n==0)
+                break;
+            else if(i==this->rows)
+                i=0;
+        }
+    }
+}

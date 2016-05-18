@@ -1,6 +1,9 @@
 #ifndef CREATENUMBER_H
 #define CREATENUMBER_H
 #include <cstdlib>
+#include <time.h>
+#include <omp.h>
+#include <iostream>
 
 class CreateNumber{
 private:
@@ -14,6 +17,7 @@ public:
     int  **getMatrix();
     int getNumber(){return this->number;}
     int getBias(){return this->bias;}
+    void distortMatrix();
 };
 
 

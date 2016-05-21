@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     Perceptron p0, p1, p2, p3, p4, p5;
     srand(time(NULL));
     ofstream outfile;
-    outfile.open("execucoes", std::ios_base::app);
+    outfile.open("execucoes.doc", std::ios_base::app);
     do {
         m0.setMatrix(0);
         m2.setMatrix(2);
@@ -462,16 +462,26 @@ int main(int argc, char** argv) {
                     outfile << endl;
                     m5.setMatrix(5);
                 }
-                outfile << "\n\nTestando com letras.\nLetra A: ";
-                m0.createLetter('A');
-                result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0),
-                        p2.recognizeNumber(m0), p3.recognizeNumber(m0), p4.recognizeNumber(m0), p5.recognizeNumber(m0));
+                outfile << "\n\nTestando com letras.\nLetra A: \n";
+                m4.createLetter('A');
+                for(int i=0;i<m4.rows;++i){
+                     for(int j=0;j<m4.columns;++j)
+                           outfile<<m4.getMatrix()[i][j]<<" ";
+                     outfile<<endl;
+                }
+                result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
+                        p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result != -1)
                     outfile << "Reconheci o numero " << result << " do padrão acima.";
                 else
                     outfile << "Nao reconheci o numero do padrao acima.";
                 outfile << "\n\nLetra E: " << endl;
                 m4.createLetter('E');
+                for(int i=0;i<m4.rows;++i){
+                     for(int j=0;j<m4.columns;++j)
+                           outfile<<m4.getMatrix()[i][j]<<" ";
+                     outfile<<endl;
+                }
                 result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
                         p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result != -1)
@@ -480,6 +490,11 @@ int main(int argc, char** argv) {
                     outfile << "Nao reconheci o numero do padrao acima.";
                 outfile << "\n\nLetra T: " << endl;
                 m4.createLetter('T');
+                for(int i=0;i<m4.rows;++i){
+                     for(int j=0;j<m4.columns;++j)
+                           outfile<<m4.getMatrix()[i][j]<<" ";
+                     outfile<<endl;
+                }
                 result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
                         p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result != -1)
@@ -488,6 +503,11 @@ int main(int argc, char** argv) {
                     outfile << "Nao reconheci o numero do padrao acima.";
                 outfile << "\n\nLetra H: " << endl;
                 m4.createLetter('H');
+                for(int i=0;i<m4.rows;++i){
+                     for(int j=0;j<m4.columns;++j)
+                           outfile<<m4.getMatrix()[i][j]<<" ";
+                     outfile<<endl;
+                }
                 result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
                         p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result != -1)
@@ -496,6 +516,11 @@ int main(int argc, char** argv) {
                     outfile << "Nao reconheci o numero do padrao acima.";
                 outfile << "\n\nLetra C: " << endl;
                 m4.createLetter('C');
+                for(int i=0;i<m4.rows;++i){
+                     for(int j=0;j<m4.columns;++j)
+                           outfile<<m4.getMatrix()[i][j]<<" ";
+                     outfile<<endl;
+                }
                 result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
                         p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result != -1)
@@ -504,6 +529,11 @@ int main(int argc, char** argv) {
                     outfile << "Nao reconheci o numero do padrao acima.";
                 outfile << "\n\nLetra N: " << endl;
                 m4.createLetter('N');
+                for(int i=0;i<m4.rows;++i){
+                     for(int j=0;j<m4.columns;++j)
+                           outfile<<m4.getMatrix()[i][j]<<" ";
+                     outfile<<endl;
+                }
                 result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4),
                         p2.recognizeNumber(m4), p3.recognizeNumber(m4), p4.recognizeNumber(m4), p5.recognizeNumber(m4));
                 if (result != -1)

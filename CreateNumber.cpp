@@ -169,7 +169,13 @@ void CreateNumber::createLetter(char letter){
         }
     }
     if(letter == 'N'){
-        for(int i=this->rows/2;i<this->rows;++i)
-            this->matrix[i][this->columns/2]=1;      
+        for(int i=0;i<this->rows;++i){
+            if(i>=1)
+                this->matrix[i][0]=this->matrix[i][this->columns-1]=1;      
+        }
+        for(int i=2;i<this->rows;++i){
+            this->matrix[i][i-1]=1;
+        }
     }
 }
+

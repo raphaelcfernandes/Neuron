@@ -100,26 +100,26 @@ int main(int argc, char** argv) {
                 } while (errors > 0);
                 outfile << "\nEpocas necessarias para treinamento: " << epoch;
                 outfile << "\n\nTesting number 0.";
-                result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0), NULL, NULL, NULL, NULL);
+                result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0), 0, 0, 0, 0);
                 outfile << "\nI've detected the number: " << result;
 
                 outfile << "\n\nTesting number 1.";
-                result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1), NULL, NULL, NULL, NULL);
+                result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1), 0, 0,0, 0);
                 outfile << "\nI've detected the number: " << result;
 
                 outfile << "\n\nTesting number 2.";
-                result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2), NULL, NULL, NULL, NULL);
+                result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2), 0, 0, 0, 0);
                 outfile << "\nI've detected the number: " << result;
 
                 outfile << "\n\nTesting number 3.";
-                result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3), NULL, NULL, NULL, NULL);
+                result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3), 0, 0, 0, 0);
                 outfile << "\nI've detected the number: " << result;
 
                 outfile << "\n\nTesting number 4.";
                 outfile << "\nI've detected the number: " << result;
 
                 outfile << "\n\nTesting number 5.";
-                result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5), NULL, NULL, NULL, NULL);
+                result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5), 0,0,0,0);
                 outfile << "\nI've detected the number: " << result;
                 outfile << "\n\nVetor de pesos do neuronio Y0: " << endl;
                 for (i = 0; i < (m0.columns * m0.rows)+1; ++i)
@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
                         }
                         outfile << endl;
                     }
-                    result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0), NULL, NULL, NULL, NULL);
+                    result = returnNumber(p0.recognizeNumber(m0), p1.recognizeNumber(m0), 0, 0, 0, 0);
                     if (result != -1)
                         outfile << "\nReconheci o numero " << result << " do padrão acima.";
                     else
@@ -156,7 +156,7 @@ int main(int argc, char** argv) {
                         }
                         outfile << endl;
                     }
-                    result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1), NULL, NULL, NULL, NULL);
+                    result = returnNumber(p0.recognizeNumber(m1), p1.recognizeNumber(m1), 0, 0, 0, 0);
                     if (result != -1)
                         outfile << "\nReconheci o numero " << result << " do padrão acima.";
                     else
@@ -175,7 +175,7 @@ int main(int argc, char** argv) {
                         }
                         outfile << endl;
                     }
-                    result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2), NULL, NULL, NULL, NULL);
+                    result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2), 0, 0, 0, 0);
                     if (result != -1)
                         outfile << "\nReconheci o numero " << result << " do padrão acima.";
                     else
@@ -194,7 +194,7 @@ int main(int argc, char** argv) {
                         }
                         outfile << endl;
                     }
-                    result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3), NULL, NULL, NULL, NULL);
+                    result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3), 0, 0, 0, 0);
                     if (result != -1)
                         outfile << "\nReconheci o numero " << result << " do padrão acima.";
                     else
@@ -213,7 +213,7 @@ int main(int argc, char** argv) {
                         }
                         outfile << endl;
                     }
-                    result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4), NULL, NULL, NULL, NULL);
+                    result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4), 0, 0, 0, 0);
                     if (result != -1)
                         outfile << "\nReconheci o numero " << result << " do padrão acima.";
                     else
@@ -232,7 +232,7 @@ int main(int argc, char** argv) {
                         }
                         outfile << endl;
                     }
-                    result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5), NULL, NULL, NULL, NULL);
+                    result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5), 0, 0, 0, 0);
                     if (result != -1)
                         outfile << "\nReconheci o numero " << result << " do padrão acima.";
                     else

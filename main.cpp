@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
                 for (i = 0; i < (m0.columns * m0.rows)+1; ++i)
                     outfile << p0.weights[i] << " ";
                 outfile << endl;
-                outfile << "\nTeste com matrizes defeituosas: \n";
+                outfile << "\nTestando padroes distorcidos: \n";
                 outfile << "\nTestando numero 0: \n";
                 for (int i = 0; i < 10; i++) {
                     m0.distortMatrix();
@@ -266,7 +266,7 @@ int main(int argc, char** argv) {
                 outfile << "\n\nVetor de pesos Y5: " << endl;
                 for (i = 0; i < (m0.columns * m0.rows)+1; ++i)
                     outfile << p5.weights[i] << " ";
-                outfile << "\n\nTestando matrizes com defeitos: ";
+                outfile << "\n\nTestando padroes distorcidos: ";
                 outfile << "\n\nTestando numero 0: \n";
                 for (int i = 0; i < 10; i++) {
                     m0.distortMatrix();

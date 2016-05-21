@@ -18,7 +18,6 @@ int Perceptron::train(CreateNumber number,int desiredOutput) {
     if (output != desiredOutput) {//Yi != Di (desired output )
         errors++;
         //Weights adjustment
-        
         weightsAdjustment(number,output,desiredOutput);
     }
     return errors;

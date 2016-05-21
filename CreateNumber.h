@@ -18,6 +18,7 @@ public:
     int getNumber(){return this->number;}
     int getBias(){return this->bias;}
     void distortMatrix();
+    void createLetter(char letter);
 };
 
 

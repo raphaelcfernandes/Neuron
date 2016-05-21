@@ -91,7 +91,6 @@ int **CreateNumber::getMatrix() {
 }
 
 void CreateNumber::distortMatrix(){
-    srand(time(NULL));
     int a;
     int sum=0,i,j,n=0;
     for (i = 0; i < this->rows; ++i) {
@@ -116,5 +115,61 @@ void CreateNumber::distortMatrix(){
             else if(i==this->rows)
                 i=0;
         }
+    }
+}
+
+void CreateNumber::createLetter(char letter){
+    for(int i=0;i<this->rows;++i){
+        #pragma omp parallel for
+        for(int j=0;j<this->columns;++j)
+            this->matrix[i][j]=0;
+    }
+    if(letter == 'T'){
+        for(int j=0;j<this->columns;++j)
+            this->matrix[0][j]=1;
+        for(int i=0;i<this->rows;++i)
+            this->matrix[i][this->columns/2]=1;
+    }
+    if(letter == 'C'){
+        for(int i=1;i<this->columns;++i)
+            this->matrix[0][i]=this->matrix[this->rows-1][i]=1;
+        for(int i=1;i<this->rows-1;++i)
+            this->matrix[i][0]=1;
+    }
+    if(letter == 'H'){
+        for(int i=0;i<this->rows;++i){
+            this->matrix[i][0]=this->matrix[i][this->columns-1]=1;
+            if(i==this->rows/2){
+                for(int j=0;j<this->columns;++j)
+                    this->matrix[i][j]=1;
+            }
+        }
+    }
+    if(letter == 'E'){
+        for(int i=0;i<this->rows;++i){
+            if(i==(this->rows/2)-1||i==0||i==this->rows-1){
+                for(int j=0;j<this->columns;++j)
+                    this->matrix[i][j]=1;
+            }
+            this->matrix[i][0]=1;
+        }
+    }
+    if(letter == 'A'){
+        for(int i=0;i<this->rows;++i){
+            if(i==1)
+                this->matrix[i][1]=this->matrix[i][this->columns-2]=1;
+            else if(i==0)
+                this->matrix[i][this->columns/2]=1;
+            else if(i==3){
+                for(int j=0;j<this->columns;++j)
+                    this->matrix[i][j]=1;
+            }
+            else
+                this->matrix[i][0]=this->matrix[i][this->columns-1]=1;
+        }
+    }
+    if(letter == 'N'){
+        for(int i=this->rows/2;i<this->rows;++i)
+            this->matrix[i][this->columns/2]=1;      
     }
 }

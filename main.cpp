@@ -127,6 +127,7 @@ int main(int argc, char** argv) {
                 outfile << "\n\nVetor de pesos do neuronio Y1: " << endl;
                 for (i = 0; i < (m0.columns * m0.rows)+1; ++i)
                     outfile << p1.weights[i] << " ";
+                outfile<<"\n\nTestando padroes distorcidos";
                 outfile << "\n\nTestando numero 0: \n";
                 for (int i = 0; i < 10; i++) {
                     m0.distortMatrix();
@@ -164,82 +165,6 @@ int main(int argc, char** argv) {
                     outfile << endl;
                     outfile << endl;
                     m1.setMatrix(1);
-                }
-                outfile << "\n\nTestando numero 2: \n";
-                for (int i = 0; i < 10; i++) {
-                    m2.distortMatrix();
-                    outfile << endl;
-                    for (int k = 0; k < m1.rows; k++) {
-                        for (int j = 0; j < m1.columns; j++) {
-                            outfile << m2.getMatrix()[k][j] << " ";
-                        }
-                        outfile << endl;
-                    }
-                    result = returnNumber(p0.recognizeNumber(m2), p1.recognizeNumber(m2), 0, 0, 0, 0);
-                    if (result != -1)
-                        outfile << "\nReconheci o numero " << result << " do padrão acima.";
-                    else
-                        outfile << "\nNao reconheci o numero do padrao acima.";
-                    outfile << endl;
-                    outfile << endl;
-                    m2.setMatrix(2);
-                }
-                outfile << "\n\nTestando numero 3: \n";
-                for (int i = 0; i < 10; i++) {
-                    m3.distortMatrix();
-                    outfile << endl;
-                    for (int k = 0; k < m1.rows; k++) {
-                        for (int j = 0; j < m1.columns; j++) {
-                            outfile << m3.getMatrix()[k][j] << " ";
-                        }
-                        outfile << endl;
-                    }
-                    result = returnNumber(p0.recognizeNumber(m3), p1.recognizeNumber(m3), 0, 0, 0, 0);
-                    if (result != -1)
-                        outfile << "\nReconheci o numero " << result << " do padrão acima.";
-                    else
-                        outfile << "\nNao reconheci o numero do padrao acima.";
-                    outfile << endl;
-                    outfile << endl;
-                    m3.setMatrix(3);
-                }
-                outfile << "\n\nTestando numero 4: \n";
-                for (int i = 0; i < 10; i++) {
-                    m4.distortMatrix();
-                    outfile << endl;
-                    for (int k = 0; k < m1.rows; k++) {
-                        for (int j = 0; j < m1.columns; j++) {
-                            outfile << m4.getMatrix()[k][j] << " ";
-                        }
-                        outfile << endl;
-                    }
-                    result = returnNumber(p0.recognizeNumber(m4), p1.recognizeNumber(m4), 0, 0, 0, 0);
-                    if (result != -1)
-                        outfile << "\nReconheci o numero " << result << " do padrão acima.";
-                    else
-                        outfile << "\nNao reconheci o numero do padrao acima.";
-                    outfile << endl;
-                    outfile << endl;
-                    m4.setMatrix(4);
-                }
-                outfile << "\n\nTestando numero 5: \n";
-                for (int i = 0; i < 10; i++) {
-                    m5.distortMatrix();
-                    outfile << endl;
-                    for (int k = 0; k < m1.rows; k++) {
-                        for (int j = 0; j < m1.columns; j++) {
-                            outfile << m5.getMatrix()[k][j] << " ";
-                        }
-                        outfile << endl;
-                    }
-                    result = returnNumber(p0.recognizeNumber(m5), p1.recognizeNumber(m5), 0, 0, 0, 0);
-                    if (result != -1)
-                        outfile << "\nReconheci o numero " << result << " do padrão acima.";
-                    else
-                        outfile << "\nNao reconheci o numero do padrao acima.";
-                    outfile << endl;
-                    outfile << endl;
-                    m5.setMatrix(5);
                 }
                 free(p0.weights);
                 free(p1.weights);

@@ -24,13 +24,12 @@ int Perceptron::train(CreateNumber number,int desiredOutput) {
 }
 
 void Perceptron::weightsAdjustment(CreateNumber number, int perceptronOutput,int desiredOutput){
-    int i, j, v_weights = 0;
+    int i, j;
     for (i = 0; i < number.rows; ++i) {
     #pragma omp parallel for schedule(static)
             for (j = 0; j < number.columns; ++j) {
                 this->weights[(i*number.columns)+j] = this->weights[(i*number.columns)+j]+
                         ((this->learningRate * (desiredOutput - perceptronOutput)) * number.getMatrix()[i][j]);
-                v_weights++;
             }
         }
     this->weights[number.columns*number.rows] = this->weights[number.columns*number.rows]+
